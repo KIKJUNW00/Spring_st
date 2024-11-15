@@ -27,31 +27,32 @@ public class MemberController {
 		}
 
 		// 검색(Read - select)
-//		@GetMapping("/member")
-//		public MemberVO getMemberById(Integer id) {
-//			
-//			return memberService.getMemberById(id);
-//		}
+		@GetMapping("/member")
+		public MemberDTO getMemberById(Integer id) {
+			
+			return memberService.getMemberById(id);
+		}
 //		
 		//입력(Create - insert)
 			@PostMapping("/member")
-			public MemberDTO addMember(@RequestBody MemberDTO memberVO) {
-//				public MemberVO addMember( MemberVO memberVO) {
+			public MemberDTO addMember(@RequestBody MemberDTO memberDTO) {
+//				public MemberDTO addMember( MemberDTO memberDTO) {
 				
-				return memberService.addMember(memberVO);
+				return memberService.addMember(memberDTO);
 				
 			}
 		
-//		//수정(Update - update)
-//			@PutMapping("/member")
-//			public int updateMember(MemberVO memberVO) {
-//				return memberService.updateMember(memberVO);
-//			}
-//			
-//			//삭제(Delete - delete)
-//			@DeleteMapping("/member")
+		//수정(Update - update)
+			@PutMapping("/member")
+			public int updateMember(MemberDTO memberDTO) {
+				return memberService.updateMember(memberDTO);
+			}
+			
+			//삭제(Delete - delete)
+			@DeleteMapping("/member")
 //			public int removeMember(Integer id) {
-//				
-//				return memberService.removeMember(id);
-//			}
+			public int removeMember(MemberDTO dto) {
+				
+				return memberService.removeMember(dto);
+			}
 }

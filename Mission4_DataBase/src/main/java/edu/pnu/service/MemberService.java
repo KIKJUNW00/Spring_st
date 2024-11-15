@@ -8,10 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import edu.pnu.dao.MemberDao;
 import edu.pnu.domain.MemberDTO;
 
-
 @Service
 public class MemberService {
-	private final MemberDao memberDao = new MemberDao();
+private final MemberDao memberDao = new MemberDao();
 	
 	//검색(Read - select)
 		public List<MemberDTO> getAllMember(){
@@ -19,9 +18,9 @@ public class MemberService {
 		}
 		
 		//검색(Read - select)
-		public MemberDTO getMemberById(Integer id){
+		public MemberDTO getMemberById(MemberDTO dto){
 
-			return memberDao.getMemberById(id);
+			return memberDao.getMemberById(dto);
 		}
 		
 		//입력(Create - insert)
@@ -40,7 +39,6 @@ public class MemberService {
 		}
 		
 		//삭제(Delete - delete)
-//		public int removeMember(Integer id) {
 		public int removeMember(MemberDTO dto) {
 			
 			return memberDao.removeMember(dto);
