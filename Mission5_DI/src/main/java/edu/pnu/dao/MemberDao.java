@@ -7,9 +7,12 @@ import java.util.List;
 import java.util.Map;
 //import java.util.Vector;
 
+import org.springframework.stereotype.Repository;
+
 import edu.pnu.connection.JDBCconnect;
 import edu.pnu.domain.MemberDTO;
 
+@Repository
 public class MemberDao extends JDBCconnect{
 	Map<String, Object> resultMap = new HashMap<String, Object>();
 	

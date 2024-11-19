@@ -1,32 +1,42 @@
 package edu.pnu.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import edu.pnu.dao.LogDao;
 import edu.pnu.dao.MemberDao;
 import edu.pnu.domain.MemberDTO;
 
-@Service
 public class MemberService {
 private final MemberDao memberDao = new MemberDao();
+private final LogDao logDao = new LogDao();
 	
 	//검색(Read - select)
 		public List<MemberDTO> getAllMember(){
-			return memberDao.getAllMember();
+			Map<String, Object> resultMap = memberDao.getAllMember();
+			logDao.insertLog(resultMap);
+			return (List<MemberDTO>) resultMap.get("result");
 		}
 		
 		//검색(Read - select)
-		public MemberDTO getMemberById(MemberDTO dto){
+		public MemberDTO getMemberById(Integer id){
 
-			return memberDao.getMemberById(dto);
+			Map<String, Object> resultMap = memberDao.getMemberById(id);
+			logDao.insertLog(resultMap);
+			
+			return (MemberDTO) resultMap.get("result");
 		}
 		
 		//입력(Create - insert)
 		public MemberDTO addMember(@RequestBody MemberDTO dto) {
 			
-			return memberDao.addMember(dto);
+			Map<String, Object> resultMap = memberDao.addMember(dto);
+			logDao.insertLog(resultMap);
+			return (MemberDTO) resultMap.get("result");
+
 			
 		}
 		
@@ -34,13 +44,17 @@ private final MemberDao memberDao = new MemberDao();
 		//수정(Update - update)
 		public int updateMember(MemberDTO dto) {
 			
-			return memberDao.updateMember(dto);
+			Map<String, Object> resultMap = memberDao.updateMember(dto);
+			logDao.insertLog(resultMap);
+			return (int) resultMap.get("result");
 		
 		}
 		
 		//삭제(Delete - delete)
-		public int removeMember(MemberDTO dto) {
+		public int removeMember(Integer id) {
 			
-			return memberDao.removeMember(dto);
+			Map<String, Object> resultMap = memberDao.removeMember(id);
+			logDao.insertLog(resultMap);
+			return (int) resultMap.get("result");
 		}
 }

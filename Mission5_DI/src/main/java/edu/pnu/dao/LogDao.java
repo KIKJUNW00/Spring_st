@@ -3,9 +3,11 @@ package edu.pnu.dao;
 import java.sql.SQLException;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import edu.pnu.connection.JDBCconnect;
 
-
+@Repository
 public class LogDao extends JDBCconnect{
 	 // Log 데이터를 삽입하는 메서드
     public void insertLog(Map<String, Object> map ) {
