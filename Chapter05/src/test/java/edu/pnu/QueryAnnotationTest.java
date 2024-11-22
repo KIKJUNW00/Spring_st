@@ -1,5 +1,6 @@
 package edu.pnu;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Random;
@@ -13,13 +14,10 @@ import edu.pnu.domain.Board;
 import edu.pnu.persistence.BoardRepository;
 
 @SpringBootTest
-public class queryMethodTest2 {
-	
+public class QueryAnnotationTest {
 	@Autowired
 	private BoardRepository boardRepo;
-	
-//	1. 테스트 데이터를 100건 입력
-//	• cnt는 random으로 0~100까지 입력
+
 //	@BeforeEach
 	public void dataPrepare() {
 		Random random = new Random();
@@ -35,30 +33,46 @@ public class queryMethodTest2 {
 		}
 	}
 	
-//	2. title에 “1” 이 포함되는 데이터 출력
-//	• Where title like “%1%”
-//	@Test
-//	public void testFindByTitle() {
-//		List<Board> boardList = boardRepo.findByTitleContaining("1");
-//
-//		System.out.println("검색 결과");
-//		for (Board board : boardList) {
-//			System.out.println("====> " + board.toString());
-//		}
-//	}
-	
-//	3. title에 “1” 이 포함되면서 cnt가 50보다 큰 데이터 출력
-//	• Where title like “%1%” and cnt > 50
-	
+//	위치기반 파라미터 //	이름기반 파라미터 
 	@Test
-	public void findByTitleContainingAndCntGreaterThan() {
-		List<Board> boardList = boardRepo.findByTitleContainingAndCntGreaterThan("17", 17L);
+	public void testQueryAnnotationTest1() {
+		List<Board> boardList = boardRepo.queryAnnotationTest1("테스트 제목 10");
 		System.out.println("검색 결과");
 		for (Board board : boardList) {
 			System.out.println("====> " + board.toString());
 		}
 	}
 
+//	특정 변수만 조회하기
+	@Test
+	public void testQueryAnnotationTest2() {
+		List<Object[]> boardList = boardRepo.queryAnnotationTest2("테스트 제목 10");
+		System.out.println("검색 결과");
+		for (Object[] board : boardList) {
+			System.out.println("====> " + Arrays.toString(board));
+		}
+	}
+	
+	
+	
 	
 	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
