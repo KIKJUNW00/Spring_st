@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>회원가입</title>
+</head>
+<body>
+	<h2>회원가입</h2>
+	<form action="/join" method="post">
+		<table th:align="center" border="1" th:cellpadding="0" th:cellspcing="0">
+			<tr>
+				<td bgcolor="green">username:</td>
+				<td><input type="text" name="username" placeholder="Username" /></td>
+			</tr>
+			
+			<tr>
+				<td bgcolor="green">password:</td>
+				<td><input type="password" name="password" placeholder="Password" /></td>			
+			</tr>
+			
+			<tr>
+				<td colspan="2" align="center">
+					<input type="submit" value="회원가입"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+</html>
